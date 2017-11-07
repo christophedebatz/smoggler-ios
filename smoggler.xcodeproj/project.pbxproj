@@ -1,0 +1,667 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1124F713BDA1FF35143D38BA /* Pods_smoggler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 050883477018037B44BE920D /* Pods_smoggler.framework */; };
+		83E71F551FAF233000CB0BBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E71F541FAF233000CB0BBF /* AppDelegate.swift */; };
+		83E71F571FAF233000CB0BBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E71F561FAF233000CB0BBF /* ViewController.swift */; };
+		83E71F5A1FAF233000CB0BBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83E71F581FAF233000CB0BBF /* Main.storyboard */; };
+		83E71F5D1FAF233000CB0BBF /* smoggler.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83E71F5B1FAF233000CB0BBF /* smoggler.xcdatamodeld */; };
+		83E71F5F1FAF233000CB0BBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83E71F5E1FAF233000CB0BBF /* Assets.xcassets */; };
+		83E71F621FAF233000CB0BBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83E71F601FAF233000CB0BBF /* LaunchScreen.storyboard */; };
+		83E71F6D1FAF233000CB0BBF /* smogglerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E71F6C1FAF233000CB0BBF /* smogglerTests.swift */; };
+		83E71F781FAF233000CB0BBF /* smogglerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E71F771FAF233000CB0BBF /* smogglerUITests.swift */; };
+		83E76D141FB1237400291AC3 /* InternetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E76D131FB1237400291AC3 /* InternetHelper.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		83E71F691FAF233000CB0BBF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83E71F491FAF233000CB0BBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83E71F501FAF233000CB0BBF;
+			remoteInfo = smoggler;
+		};
+		83E71F741FAF233000CB0BBF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83E71F491FAF233000CB0BBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83E71F501FAF233000CB0BBF;
+			remoteInfo = smoggler;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		050883477018037B44BE920D /* Pods_smoggler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smoggler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CD84B5E5E4DA5C005930465 /* Pods-smoggler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smoggler.debug.xcconfig"; path = "Pods/Target Support Files/Pods-smoggler/Pods-smoggler.debug.xcconfig"; sourceTree = "<group>"; };
+		83E71F511FAF233000CB0BBF /* smoggler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smoggler.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		83E71F541FAF233000CB0BBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		83E71F561FAF233000CB0BBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		83E71F591FAF233000CB0BBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		83E71F5C1FAF233000CB0BBF /* smoggler.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = smoggler.xcdatamodel; sourceTree = "<group>"; };
+		83E71F5E1FAF233000CB0BBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		83E71F611FAF233000CB0BBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		83E71F631FAF233000CB0BBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83E71F681FAF233000CB0BBF /* smogglerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = smogglerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		83E71F6C1FAF233000CB0BBF /* smogglerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smogglerTests.swift; sourceTree = "<group>"; };
+		83E71F6E1FAF233000CB0BBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83E71F731FAF233000CB0BBF /* smogglerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = smogglerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		83E71F771FAF233000CB0BBF /* smogglerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smogglerUITests.swift; sourceTree = "<group>"; };
+		83E71F791FAF233000CB0BBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83E76D131FB1237400291AC3 /* InternetHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetHelper.swift; sourceTree = "<group>"; };
+		B8AE93477C41F1D4E85D4CDE /* Pods-smoggler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smoggler.release.xcconfig"; path = "Pods/Target Support Files/Pods-smoggler/Pods-smoggler.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		83E71F4E1FAF233000CB0BBF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1124F713BDA1FF35143D38BA /* Pods_smoggler.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83E71F651FAF233000CB0BBF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83E71F701FAF233000CB0BBF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2E9EEB0F6E67BEB8ED5C2512 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0CD84B5E5E4DA5C005930465 /* Pods-smoggler.debug.xcconfig */,
+				B8AE93477C41F1D4E85D4CDE /* Pods-smoggler.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		369B6FA0E523566D7E8392DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				050883477018037B44BE920D /* Pods_smoggler.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		83E71F481FAF233000CB0BBF = {
+			isa = PBXGroup;
+			children = (
+				83E71F531FAF233000CB0BBF /* smoggler */,
+				83E71F6B1FAF233000CB0BBF /* smogglerTests */,
+				83E71F761FAF233000CB0BBF /* smogglerUITests */,
+				83E71F521FAF233000CB0BBF /* Products */,
+				2E9EEB0F6E67BEB8ED5C2512 /* Pods */,
+				369B6FA0E523566D7E8392DD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		83E71F521FAF233000CB0BBF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				83E71F511FAF233000CB0BBF /* smoggler.app */,
+				83E71F681FAF233000CB0BBF /* smogglerTests.xctest */,
+				83E71F731FAF233000CB0BBF /* smogglerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		83E71F531FAF233000CB0BBF /* smoggler */ = {
+			isa = PBXGroup;
+			children = (
+				83E71F541FAF233000CB0BBF /* AppDelegate.swift */,
+				83E71F561FAF233000CB0BBF /* ViewController.swift */,
+				83E71F581FAF233000CB0BBF /* Main.storyboard */,
+				83E71F5E1FAF233000CB0BBF /* Assets.xcassets */,
+				83E71F601FAF233000CB0BBF /* LaunchScreen.storyboard */,
+				83E71F631FAF233000CB0BBF /* Info.plist */,
+				83E71F5B1FAF233000CB0BBF /* smoggler.xcdatamodeld */,
+				83E76D131FB1237400291AC3 /* InternetHelper.swift */,
+			);
+			path = smoggler;
+			sourceTree = "<group>";
+		};
+		83E71F6B1FAF233000CB0BBF /* smogglerTests */ = {
+			isa = PBXGroup;
+			children = (
+				83E71F6C1FAF233000CB0BBF /* smogglerTests.swift */,
+				83E71F6E1FAF233000CB0BBF /* Info.plist */,
+			);
+			path = smogglerTests;
+			sourceTree = "<group>";
+		};
+		83E71F761FAF233000CB0BBF /* smogglerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				83E71F771FAF233000CB0BBF /* smogglerUITests.swift */,
+				83E71F791FAF233000CB0BBF /* Info.plist */,
+			);
+			path = smogglerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		83E71F501FAF233000CB0BBF /* smoggler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83E71F7C1FAF233000CB0BBF /* Build configuration list for PBXNativeTarget "smoggler" */;
+			buildPhases = (
+				AD81897866C628FD26B6C2F1 /* [CP] Check Pods Manifest.lock */,
+				83E71F4D1FAF233000CB0BBF /* Sources */,
+				83E71F4E1FAF233000CB0BBF /* Frameworks */,
+				83E71F4F1FAF233000CB0BBF /* Resources */,
+				9972A176558C4D6BC79A5DEF /* [CP] Embed Pods Frameworks */,
+				F9FC224E9A50B08943FDBBAE /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = smoggler;
+			productName = smoggler;
+			productReference = 83E71F511FAF233000CB0BBF /* smoggler.app */;
+			productType = "com.apple.product-type.application";
+		};
+		83E71F671FAF233000CB0BBF /* smogglerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83E71F7F1FAF233000CB0BBF /* Build configuration list for PBXNativeTarget "smogglerTests" */;
+			buildPhases = (
+				83E71F641FAF233000CB0BBF /* Sources */,
+				83E71F651FAF233000CB0BBF /* Frameworks */,
+				83E71F661FAF233000CB0BBF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				83E71F6A1FAF233000CB0BBF /* PBXTargetDependency */,
+			);
+			name = smogglerTests;
+			productName = smogglerTests;
+			productReference = 83E71F681FAF233000CB0BBF /* smogglerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		83E71F721FAF233000CB0BBF /* smogglerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83E71F821FAF233000CB0BBF /* Build configuration list for PBXNativeTarget "smogglerUITests" */;
+			buildPhases = (
+				83E71F6F1FAF233000CB0BBF /* Sources */,
+				83E71F701FAF233000CB0BBF /* Frameworks */,
+				83E71F711FAF233000CB0BBF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				83E71F751FAF233000CB0BBF /* PBXTargetDependency */,
+			);
+			name = smogglerUITests;
+			productName = smogglerUITests;
+			productReference = 83E71F731FAF233000CB0BBF /* smogglerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83E71F491FAF233000CB0BBF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "Christophe de Batz";
+				TargetAttributes = {
+					83E71F501FAF233000CB0BBF = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = Z4C35ZE6EK;
+						LastSwiftMigration = 0910;
+						ProvisioningStyle = Automatic;
+					};
+					83E71F671FAF233000CB0BBF = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = Z4C35ZE6EK;
+						LastSwiftMigration = 0910;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 83E71F501FAF233000CB0BBF;
+					};
+					83E71F721FAF233000CB0BBF = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = Z4C35ZE6EK;
+						LastSwiftMigration = 0910;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 83E71F501FAF233000CB0BBF;
+					};
+				};
+			};
+			buildConfigurationList = 83E71F4C1FAF233000CB0BBF /* Build configuration list for PBXProject "smoggler" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83E71F481FAF233000CB0BBF;
+			productRefGroup = 83E71F521FAF233000CB0BBF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				83E71F501FAF233000CB0BBF /* smoggler */,
+				83E71F671FAF233000CB0BBF /* smogglerTests */,
+				83E71F721FAF233000CB0BBF /* smogglerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		83E71F4F1FAF233000CB0BBF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83E71F621FAF233000CB0BBF /* LaunchScreen.storyboard in Resources */,
+				83E71F5F1FAF233000CB0BBF /* Assets.xcassets in Resources */,
+				83E71F5A1FAF233000CB0BBF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83E71F661FAF233000CB0BBF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83E71F711FAF233000CB0BBF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9972A176558C4D6BC79A5DEF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-smoggler/Pods-smoggler-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftHTTP/SwiftHTTP.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHTTP.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-smoggler/Pods-smoggler-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD81897866C628FD26B6C2F1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-smoggler-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9FC224E9A50B08943FDBBAE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-smoggler/Pods-smoggler-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		83E71F4D1FAF233000CB0BBF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83E76D141FB1237400291AC3 /* InternetHelper.swift in Sources */,
+				83E71F5D1FAF233000CB0BBF /* smoggler.xcdatamodeld in Sources */,
+				83E71F571FAF233000CB0BBF /* ViewController.swift in Sources */,
+				83E71F551FAF233000CB0BBF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83E71F641FAF233000CB0BBF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83E71F6D1FAF233000CB0BBF /* smogglerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83E71F6F1FAF233000CB0BBF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83E71F781FAF233000CB0BBF /* smogglerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		83E71F6A1FAF233000CB0BBF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83E71F501FAF233000CB0BBF /* smoggler */;
+			targetProxy = 83E71F691FAF233000CB0BBF /* PBXContainerItemProxy */;
+		};
+		83E71F751FAF233000CB0BBF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83E71F501FAF233000CB0BBF /* smoggler */;
+			targetProxy = 83E71F741FAF233000CB0BBF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		83E71F581FAF233000CB0BBF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83E71F591FAF233000CB0BBF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		83E71F601FAF233000CB0BBF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83E71F611FAF233000CB0BBF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		83E71F7A1FAF233000CB0BBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		83E71F7B1FAF233000CB0BBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		83E71F7D1FAF233000CB0BBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CD84B5E5E4DA5C005930465 /* Pods-smoggler.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Z4C35ZE6EK;
+				INFOPLIST_FILE = smoggler/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.labs.debatz.smoggler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		83E71F7E1FAF233000CB0BBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8AE93477C41F1D4E85D4CDE /* Pods-smoggler.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Z4C35ZE6EK;
+				INFOPLIST_FILE = smoggler/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.labs.debatz.smoggler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		83E71F801FAF233000CB0BBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = Z4C35ZE6EK;
+				INFOPLIST_FILE = smogglerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.labs.debatz.smogglerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/smoggler.app/smoggler";
+			};
+			name = Debug;
+		};
+		83E71F811FAF233000CB0BBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = Z4C35ZE6EK;
+				INFOPLIST_FILE = smogglerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.labs.debatz.smogglerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/smoggler.app/smoggler";
+			};
+			name = Release;
+		};
+		83E71F831FAF233000CB0BBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = Z4C35ZE6EK;
+				INFOPLIST_FILE = smogglerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.labs.debatz.smogglerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = smoggler;
+			};
+			name = Debug;
+		};
+		83E71F841FAF233000CB0BBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = Z4C35ZE6EK;
+				INFOPLIST_FILE = smogglerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.labs.debatz.smogglerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = smoggler;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		83E71F4C1FAF233000CB0BBF /* Build configuration list for PBXProject "smoggler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83E71F7A1FAF233000CB0BBF /* Debug */,
+				83E71F7B1FAF233000CB0BBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83E71F7C1FAF233000CB0BBF /* Build configuration list for PBXNativeTarget "smoggler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83E71F7D1FAF233000CB0BBF /* Debug */,
+				83E71F7E1FAF233000CB0BBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83E71F7F1FAF233000CB0BBF /* Build configuration list for PBXNativeTarget "smogglerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83E71F801FAF233000CB0BBF /* Debug */,
+				83E71F811FAF233000CB0BBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83E71F821FAF233000CB0BBF /* Build configuration list for PBXNativeTarget "smogglerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83E71F831FAF233000CB0BBF /* Debug */,
+				83E71F841FAF233000CB0BBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		83E71F5B1FAF233000CB0BBF /* smoggler.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				83E71F5C1FAF233000CB0BBF /* smoggler.xcdatamodel */,
+			);
+			currentVersion = 83E71F5C1FAF233000CB0BBF /* smoggler.xcdatamodel */;
+			path = smoggler.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 83E71F491FAF233000CB0BBF /* Project object */;
+}
