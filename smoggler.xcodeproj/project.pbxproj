@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1124F713BDA1FF35143D38BA /* Pods_smoggler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 050883477018037B44BE920D /* Pods_smoggler.framework */; };
+		83218DE11FB63F4600EDE055 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83218DE01FB63F4600EDE055 /* LoginViewController.swift */; };
+		83C527E51FD03EB400EDED1F /* NSCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C527E41FD03EB400EDED1F /* NSCoder.swift */; };
 		83E71F551FAF233000CB0BBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E71F541FAF233000CB0BBF /* AppDelegate.swift */; };
-		83E71F571FAF233000CB0BBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E71F561FAF233000CB0BBF /* ViewController.swift */; };
+		83E71F571FAF233000CB0BBF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E71F561FAF233000CB0BBF /* HomeViewController.swift */; };
 		83E71F5A1FAF233000CB0BBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83E71F581FAF233000CB0BBF /* Main.storyboard */; };
 		83E71F5D1FAF233000CB0BBF /* smoggler.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83E71F5B1FAF233000CB0BBF /* smoggler.xcdatamodeld */; };
 		83E71F5F1FAF233000CB0BBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83E71F5E1FAF233000CB0BBF /* Assets.xcassets */; };
@@ -39,9 +41,11 @@
 /* Begin PBXFileReference section */
 		050883477018037B44BE920D /* Pods_smoggler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smoggler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD84B5E5E4DA5C005930465 /* Pods-smoggler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smoggler.debug.xcconfig"; path = "Pods/Target Support Files/Pods-smoggler/Pods-smoggler.debug.xcconfig"; sourceTree = "<group>"; };
+		83218DE01FB63F4600EDE055 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		83C527E41FD03EB400EDED1F /* NSCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCoder.swift; sourceTree = "<group>"; };
 		83E71F511FAF233000CB0BBF /* smoggler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smoggler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83E71F541FAF233000CB0BBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		83E71F561FAF233000CB0BBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		83E71F561FAF233000CB0BBF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		83E71F591FAF233000CB0BBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		83E71F5C1FAF233000CB0BBF /* smoggler.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = smoggler.xcdatamodel; sourceTree = "<group>"; };
 		83E71F5E1FAF233000CB0BBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -126,13 +130,15 @@
 			isa = PBXGroup;
 			children = (
 				83E71F541FAF233000CB0BBF /* AppDelegate.swift */,
-				83E71F561FAF233000CB0BBF /* ViewController.swift */,
+				83E71F561FAF233000CB0BBF /* HomeViewController.swift */,
 				83E71F581FAF233000CB0BBF /* Main.storyboard */,
 				83E71F5E1FAF233000CB0BBF /* Assets.xcassets */,
 				83E71F601FAF233000CB0BBF /* LaunchScreen.storyboard */,
 				83E71F631FAF233000CB0BBF /* Info.plist */,
 				83E71F5B1FAF233000CB0BBF /* smoggler.xcdatamodeld */,
 				83E76D131FB1237400291AC3 /* InternetHelper.swift */,
+				83218DE01FB63F4600EDE055 /* LoginViewController.swift */,
+				83C527E41FD03EB400EDED1F /* NSCoder.swift */,
 			);
 			path = smoggler;
 			sourceTree = "<group>";
@@ -301,11 +307,25 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-smoggler/Pods-smoggler-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHTTP/SwiftHTTP.framework",
 				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHTTP.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
 			);
@@ -354,9 +374,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83C527E51FD03EB400EDED1F /* NSCoder.swift in Sources */,
 				83E76D141FB1237400291AC3 /* InternetHelper.swift in Sources */,
 				83E71F5D1FAF233000CB0BBF /* smoggler.xcdatamodeld in Sources */,
-				83E71F571FAF233000CB0BBF /* ViewController.swift in Sources */,
+				83E71F571FAF233000CB0BBF /* HomeViewController.swift in Sources */,
+				83218DE11FB63F4600EDE055 /* LoginViewController.swift in Sources */,
 				83E71F551FAF233000CB0BBF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

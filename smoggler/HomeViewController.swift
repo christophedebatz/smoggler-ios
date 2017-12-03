@@ -2,35 +2,37 @@ import UIKit
 import CoreData
 import TransitionButton
 
- /**
+/**
  A chaque démarrage, on envoi toutes les données enregistrées mais non exportées
  A chaque démarrage, on reçoit toutes les données passées
  A chaque fois que l'utilisateur fume, on envoi au serveur ou on sauvegarde en local si pas d'internet
  */
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
 
     // MARK: - IBOutlets
     @IBOutlet weak var todayCigarettesCount: UILabel!
     
     // MARK: - Initialize properties
     var managedObjectContext: NSManagedObjectContext?
+    var loggedInUser:User?
     let smokingButton = TransitionButton()
     
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder = NSCoder.empty()) {
         super.init(coder: aDecoder)
         self.managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("current user=", self.loggedInUser?.lastName)
         
         // smoking button job here
         let x = (self.view.frame.size.width - 230) / 2
-        let y = (self.view.frame.size.height - 50) / 2
-        smokingButton.frame = CGRect(x: x, y: y, width: 230, height: 50)
+        let y = (self.view.frame.size.height - 60) / 2
+        smokingButton.frame = CGRect(x: x, y: y, width: 230, height: 60)
         smokingButton.backgroundColor = .brown
-        smokingButton.setTitle("I'm smoking now", for: .normal)
+        smokingButton.setTitle("I'm smoking", for: .normal)
         smokingButton.cornerRadius = 20
         smokingButton.spinnerColor = .white
         smokingButton.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
@@ -38,10 +40,6 @@ class ViewController: UIViewController {
         
         // display today's cigarettes counter
         self.displayTodaysCigarettes()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
     
     func synchronizeWithServer() {
@@ -69,6 +67,10 @@ class ViewController: UIViewController {
        // send data though network
 //        if InternetHelper.isInternetAvailable() {
 //            self.synchronizeWithServer()
+        
+//               let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "SmokingMoment")
+//               let request = NSBatchDeleteRequest(fetchRequest: fetch)
+//               let result = try managedObjectContext?.execute(request)
 //        }
         
         // store temporaly data on store
@@ -106,7 +108,7 @@ class ViewController: UIViewController {
             plural = "s"
         }
         let text = String(describing: count) + " cigarette" + plural + " today"
-        todayCigarettesCount.text = text
+        self.todayCigarettesCount.text = text
     }
     
     // MARK: - IBActions
