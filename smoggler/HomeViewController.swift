@@ -1,6 +1,6 @@
 import UIKit
 import CoreData
-import TransitionButton
+import JOEmojiableBtn
 
 /**
  A chaque démarrage, on envoi toutes les données enregistrées mais non exportées
@@ -8,7 +8,7 @@ import TransitionButton
  A chaque fois que l'utilisateur fume, on envoi au serveur ou on sauvegarde en local si pas d'internet
  */
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, JOEmojiableDelegate {
 
     // MARK: - IBOutlets
     @IBOutlet weak var todayCigarettesCount: UILabel!
@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     // MARK: - Initialize properties
     var managedObjectContext: NSManagedObjectContext?
     var loggedInUser:User?
-    let smokingButton = TransitionButton()
+    let smokingButton = JOEmojiableBtn(frame: CGRect(x: 40, y: 200, width: 50, height: 50))
     
     required init?(coder aDecoder: NSCoder = NSCoder.empty()) {
         super.init(coder: aDecoder)
@@ -33,9 +33,17 @@ class HomeViewController: UIViewController {
         smokingButton.frame = CGRect(x: x, y: y, width: 230, height: 60)
         smokingButton.backgroundColor = .brown
         smokingButton.setTitle("I'm smoking", for: .normal)
-        smokingButton.cornerRadius = 20
-        smokingButton.spinnerColor = .white
-        smokingButton.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
+        smokingButton.delegate = self
+        smokingButton.layer.cornerRadius = 10
+        smokingButton.layer.
+        smokingButton.dataset = [
+            JOEmojiableOption(image: "img_1", name: "dislike"),
+            JOEmojiableOption(image: "img_2", name: "broken"),
+            JOEmojiableOption(image: "img_3", name: "he he"),
+            JOEmojiableOption(image: "img_4", name: "ooh"),
+            JOEmojiableOption(image: "img_5", name: "meh!"),
+            JOEmojiableOption(image: "img_6", name: "ahh!")
+        ]
         self.view.addSubview(smokingButton)
         
         // display today's cigarettes counter
@@ -64,6 +72,10 @@ class HomeViewController: UIViewController {
     }
     
     func addSmokingMoment() {
+        GeolocationHelper(coordsCompletion: { (lat: String, lng: String) -> Void in
+            print("lat", lat, ", lng=", lng)
+            self.storeTemporaly()
+        })
        // send data though network
 //        if InternetHelper.isInternetAvailable() {
 //            self.synchronizeWithServer()
@@ -75,7 +87,7 @@ class HomeViewController: UIViewController {
         
         // store temporaly data on store
 //        else {
-            self.storeTemporaly()
+//            self.storeTemporaly()
 //        }
     }
 
@@ -113,8 +125,17 @@ class HomeViewController: UIViewController {
     
     // MARK: - IBActions
     
-    @IBAction func buttonAction(_ button: TransitionButton) {
+    func selectedOption(_ sender: JOEmojiableBtn, index: Int) {
+        print("Option \(index) selected")
         self.addSmokingMoment()
+    }
+    
+    func singleTap(_ sender: JOEmojiableBtn) {
+        print("single")
+    }
+    
+    func canceledAction(_ sender: JOEmojiableBtn) {
+        print("cancelled")
     }
 }
 

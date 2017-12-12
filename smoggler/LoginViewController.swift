@@ -17,34 +17,24 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         if let accessToken = AccessToken.current {
-            print(accessToken)
-            
-            print("1")
             if accessToken.userId == nil {
-                print("2")
                 self.showFacebookConnect()
             } else {
-                print("fetch user from cache")
                 let user:User? = self.fetchCurrentLoggedInUser(apiId: accessToken.userId!)
                 if user == nil {
-                    print("cannot found user in cache, search on fb")
                     self.fetchHttpFacebookUser(completion: { (error: Bool, responseUser: User?) -> Void in
                         if error == false {
-                            print("user has been found from fb, go to main view")
                             self.storeNewLoggedInUser(user: responseUser)
                             self.gotoMainView(user:responseUser)
                         } else {
-                            print("an error occured.")
                             // show alert dialog to ask user retrying process
                         }
                     })
                 } else {
-                    print("user has been found in cache, go to main view")
                     self.gotoMainView(user:user)
                 }
             }
         } else {
-            print("3")
             self.showFacebookConnect()
         }
     }
@@ -72,7 +62,7 @@ class LoginViewController: UIViewController {
             do {
                 try user?.managedObjectContext?.save()
             } catch {
-                print("error appeared")
+                print("Error appeared while storing logged in user on cache.")
             }
         }
     }
