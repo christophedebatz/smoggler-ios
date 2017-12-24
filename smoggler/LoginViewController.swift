@@ -2,6 +2,7 @@ import Foundation
 import CoreData
 import FacebookCore
 import FacebookLogin
+import Alertift
 
 class LoginViewController: UIViewController {
 
@@ -13,47 +14,19 @@ class LoginViewController: UIViewController {
         self.managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if let accessToken = AccessToken.current {
-            if accessToken.userId == nil {
-                self.showFacebookConnect()
-            } else {
-                let user:User? = self.fetchCurrentLoggedInUser(apiId: accessToken.userId!)
-                if user == nil {
-                    self.fetchHttpFacebookUser(completion: { (error: Bool, responseUser: User?) -> Void in
-                        if error == false {
-                            self.storeNewLoggedInUser(user: responseUser)
-                            self.gotoMainView(user:responseUser)
-                        } else {
-                            // show alert dialog to ask user retrying process
-                        }
-                    })
-                } else {
-                    self.gotoMainView(user:user)
-                }
-            }
-        } else {
-            self.showFacebookConnect()
-        }
-    }
-    
     func showFacebookConnect() {
-        let loginButton = LoginButton(readPermissions: [ .publicProfile, .email, .userFriends ])
+        let loginButton = LoginButton(readPermissions: [ .publicProfile, .email ])
         loginButton.center = view.center
         self.view.addSubview(loginButton)
     }
     
     func gotoMainView(user:User?) {
-        if user != nil {
-            DispatchQueue.main.async {
-                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                let nextViewController:UITabBarController = storyBoard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
-                let homeViewController = nextViewController.viewControllers![0] as! HomeViewController
-                homeViewController.loggedInUser = user
-                self.present(nextViewController, animated:true, completion:nil)
-            }
+        DispatchQueue.main.async {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let nextViewController:UITabBarController = storyBoard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+            let homeViewController:HomeViewController = nextViewController.viewControllers![0] as! HomeViewController
+            homeViewController.loggedInUser = user
+            self.present(nextViewController, animated:true, completion:nil)
         }
     }
     
@@ -81,7 +54,7 @@ class LoginViewController: UIViewController {
         }
         return nil
     }
- 
+    
     func fetchHttpFacebookUser(completion: @escaping (_ error: Bool, _ result: User?) -> Void) {
         let connection = GraphRequestConnection()
         let request = GraphRequest(
@@ -94,47 +67,92 @@ class LoginViewController: UIViewController {
         
         request.start { (response, result) in
             switch result {
-                case .failed(let error):
-                    print("Error when querying facebook profile \(error)")
-                    completion(true, nil)
+            case .failed(let error):
+                print("Error when querying facebook profile \(error)")
+                completion(true, nil)
                 
-                case .success(let response):
-                    let user:User = NSEntityDescription.insertNewObject(
-                        forEntityName: "User",
-                        into: self.managedObjectContext!
+            case .success(let response):
+                let user:User = NSEntityDescription.insertNewObject(
+                    forEntityName: "User",
+                    into: self.managedObjectContext!
                     ) as! User
-                    
-                    if let dict = response.dictionaryValue {
-                        let email = dict["email"] as? String
-                        let firstName = dict["first_name"] as? String
-                        let lastName = dict["last_name"] as? String
-//                        let locale = dict["locale"] as? String
-                        
-                        if let picture = dict["picture"] as? NSDictionary {
-                            if let data = picture["data"] as? NSDictionary{
-                                if let profilePicture = data["url"] as? String {
-                                    user.pictureUrl = profilePicture
-                                }
+                
+                if let dict = response.dictionaryValue {
+                    let email = dict["email"] as? String
+                    let firstName = dict["first_name"] as? String
+                    let lastName = dict["last_name"] as? String
+                    if let picture = dict["picture"] as? NSDictionary {
+                        if let data = picture["data"] as? NSDictionary{
+                            if let profilePicture = data["url"] as? String {
+                                user.pictureUrl = profilePicture
                             }
                         }
-                        
-                        user.email = email
-                        user.firstName = firstName
-                        user.lastName = lastName
-//                        user.locale = locale
-                        user.facebookId = AccessToken.current?.userId
-                        user.facebookAccessToken = AccessToken.current?.authenticationToken
-                        user.facebookAccessTokenExpirationDate = AccessToken.current?.expirationDate
                     }
-//                    user.birthday = response.dictionaryValue?["birthday"] as? String
-//                    user.gender = Int16((response.dictionaryValue?["gender"] as! String))!
-//                    user.locale = response.dictionaryValue?["locale"] as? String
                     
-                    completion(false, user)
+                    user.email = email
+                    user.firstName = firstName
+                    user.lastName = lastName
+                    user.facebookId = AccessToken.current?.userId
+                    user.facebookAccessToken = AccessToken.current?.authenticationToken
+                    user.facebookAccessTokenExpirationDate = AccessToken.current?.expirationDate
+                }
+                
+                completion(false, user)
             }
         }
         connection.add(request)
         connection.start()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let label = UILabel()
+        label.center = CGPoint(x: 0, y: view.frame.size.height / 2)
+        label.frame.size = CGSize(width: 500, height: 200)
+        label.textColor = .red
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        
+        if let accessToken = AccessToken.current {
+            if accessToken.userId == nil {
+                showFacebookConnect()
+            } else {
+                let user:User? = fetchCurrentLoggedInUser(apiId: accessToken.userId!)
+                if user != nil {
+                    if !ReachabilityManager.shared.isNetworkAvailable {
+                        label.text = "You are not connected to the Internet now."
+                    } else {
+                        self.fetchHttpFacebookUser(completion: { (error: Bool, facebookUser: User?) -> Void in
+                            if (error == false && facebookUser != nil) {
+                                HttpService.sendUser(user: facebookUser!, completion: { (error: ApiError?, remoteUser: User?) -> Void in
+                                    if error != nil && remoteUser != nil {
+                                        self.storeNewLoggedInUser(user: remoteUser)
+                                        self.gotoMainView(user:remoteUser)
+                                    } else {
+                                        if error?.getCode() == 409 {
+                                            self.gotoMainView(user:facebookUser!)
+                                        } else {
+                                            label.text = "An error occured while storing user remotly. Please try again."
+                                        }
+                                    }
+                                })
+                            } else {
+                                label.text = "An error occured while exchanging data whith Facebook. Please try again."
+                            }
+                        })
+                    }
+                } else {
+                    self.gotoMainView(user:user)
+                }
+            }
+        } else {
+            self.showFacebookConnect()
+        }
+        
+        if label.text != nil {
+            self.view.addSubview(label)
+        }
     }
 
 }

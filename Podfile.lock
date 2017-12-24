@@ -1,4 +1,7 @@
 PODS:
+  - Alamofire (4.5.1)
+  - Alertift (3.0)
+  - Arrow (3.0.5)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -24,27 +27,31 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.29.0):
     - FBSDKCoreKit
-  - JOEmojiableBtn (0.1.0)
+  - LTMorphingLabel (0.5.6)
+  - Persei (3.1.1)
+  - ReachabilitySwift (3)
+  - Smile (1.3.0)
+  - thenPromise (3.0.1)
+  - ws (3.0.0):
+    - Alamofire (~> 4.5.1)
+    - Arrow (~> 3.0.5)
+    - thenPromise (~> 3.0.0)
 
 DEPENDENCIES:
+  - Alertift (~> 3.0)
   - FacebookCore
   - FacebookLogin
   - FacebookShare
-  - JOEmojiableBtn (from `https://github.com/lojals/JOEmojiableBtn.git`, branch `master`, tag `2.0.0`)
-
-EXTERNAL SOURCES:
-  JOEmojiableBtn:
-    :branch: master
-    :git: https://github.com/lojals/JOEmojiableBtn.git
-    :tag: 2.0.0
-
-CHECKOUT OPTIONS:
-  JOEmojiableBtn:
-    :commit: 03b3a5bef75bd2188b798eb218b93c94b6667461
-    :git: https://github.com/lojals/JOEmojiableBtn.git
-    :tag: 2.0.0
+  - LTMorphingLabel
+  - Persei (~> 3.1)
+  - ReachabilitySwift (~> 3)
+  - Smile
+  - ws (~> 3.0.0)
 
 SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alertift: ffd7f53d819ea29b65a0d08e5a1468fac8cc0d6a
+  Arrow: b696d6173296da330d1a995019db42f693249cd6
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
   FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
@@ -52,8 +59,13 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
   FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
   FBSDKShareKit: 18a2cd118aef11dd657fe7e8b64bae5c719088b2
-  JOEmojiableBtn: 7e3ca82bbb6b909ffb1f2ba26d9ea4fdfb3aadd4
+  LTMorphingLabel: bdb51d4682e9822da89da6f567bd8aa456fd6650
+  Persei: 6d36b54e40eccd437211548d3f897269c85d3a13
+  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
+  Smile: 5e0094b5431fd2f4224426f2446ac4d69a8beb38
+  thenPromise: cb6dc03a7149a1511ed726b161676222e2330b70
+  ws: 1690376f0653ecea866a08c0874bc59e32d206c2
 
-PODFILE CHECKSUM: c8b17e0f0a49f5ff1cea2d6c09a04325b0e8d0f9
+PODFILE CHECKSUM: 3e5dc1bf29c6fd263f99334c4925933b442f5096
 
 COCOAPODS: 1.4.0.beta.2

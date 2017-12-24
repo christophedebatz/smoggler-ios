@@ -9,8 +9,13 @@
 /* Begin PBXBuildFile section */
 		1124F713BDA1FF35143D38BA /* Pods_smoggler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 050883477018037B44BE920D /* Pods_smoggler.framework */; };
 		83218DE11FB63F4600EDE055 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83218DE01FB63F4600EDE055 /* LoginViewController.swift */; };
+		8329071D1FE4721100271C5E /* EmojiImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8329071C1FE4721100271C5E /* EmojiImageExtension.swift */; };
+		837228B51FE6982000410832 /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837228B41FE6981F00410832 /* LocalStorageService.swift */; };
+		837228B71FE6A02E00410832 /* UserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837228B61FE6A02E00410832 /* UserExtension.swift */; };
+		837228B91FE6A25500410832 /* CigaretteExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837228B81FE6A25500410832 /* CigaretteExtension.swift */; };
+		8389792C1FE5471E00137844 /* HttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389792B1FE5471E00137844 /* HttpService.swift */; };
+		8389792E1FE558AB00137844 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389792D1FE558AB00137844 /* ReachabilityManager.swift */; };
 		83C527E51FD03EB400EDED1F /* NSCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C527E41FD03EB400EDED1F /* NSCoder.swift */; };
-		83C9A2071FDF07BF00F1F548 /* GeolocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A2061FDF07BF00F1F548 /* GeolocationHelper.swift */; };
 		83E71F551FAF233000CB0BBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E71F541FAF233000CB0BBF /* AppDelegate.swift */; };
 		83E71F571FAF233000CB0BBF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E71F561FAF233000CB0BBF /* HomeViewController.swift */; };
 		83E71F5A1FAF233000CB0BBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83E71F581FAF233000CB0BBF /* Main.storyboard */; };
@@ -20,6 +25,7 @@
 		83E71F6D1FAF233000CB0BBF /* smogglerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E71F6C1FAF233000CB0BBF /* smogglerTests.swift */; };
 		83E71F781FAF233000CB0BBF /* smogglerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E71F771FAF233000CB0BBF /* smogglerUITests.swift */; };
 		83E76D141FB1237400291AC3 /* InternetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E76D131FB1237400291AC3 /* InternetHelper.swift */; };
+		83EFD91A1FEF168800A7A097 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EFD9191FEF168800A7A097 /* ApiError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +49,13 @@
 		050883477018037B44BE920D /* Pods_smoggler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smoggler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD84B5E5E4DA5C005930465 /* Pods-smoggler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smoggler.debug.xcconfig"; path = "Pods/Target Support Files/Pods-smoggler/Pods-smoggler.debug.xcconfig"; sourceTree = "<group>"; };
 		83218DE01FB63F4600EDE055 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8329071C1FE4721100271C5E /* EmojiImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiImageExtension.swift; sourceTree = "<group>"; };
+		837228B41FE6981F00410832 /* LocalStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageService.swift; sourceTree = "<group>"; };
+		837228B61FE6A02E00410832 /* UserExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExtension.swift; sourceTree = "<group>"; };
+		837228B81FE6A25500410832 /* CigaretteExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CigaretteExtension.swift; sourceTree = "<group>"; };
+		8389792B1FE5471E00137844 /* HttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpService.swift; sourceTree = "<group>"; };
+		8389792D1FE558AB00137844 /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		83C527E41FD03EB400EDED1F /* NSCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCoder.swift; sourceTree = "<group>"; };
-		83C9A2061FDF07BF00F1F548 /* GeolocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeolocationHelper.swift; sourceTree = "<group>"; };
 		83E71F511FAF233000CB0BBF /* smoggler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smoggler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83E71F541FAF233000CB0BBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83E71F561FAF233000CB0BBF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +71,7 @@
 		83E71F771FAF233000CB0BBF /* smogglerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smogglerUITests.swift; sourceTree = "<group>"; };
 		83E71F791FAF233000CB0BBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83E76D131FB1237400291AC3 /* InternetHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetHelper.swift; sourceTree = "<group>"; };
+		83EFD9191FEF168800A7A097 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		B8AE93477C41F1D4E85D4CDE /* Pods-smoggler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smoggler.release.xcconfig"; path = "Pods/Target Support Files/Pods-smoggler/Pods-smoggler.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,8 +152,14 @@
 				83E71F5B1FAF233000CB0BBF /* smoggler.xcdatamodeld */,
 				83E76D131FB1237400291AC3 /* InternetHelper.swift */,
 				83218DE01FB63F4600EDE055 /* LoginViewController.swift */,
+				837228B61FE6A02E00410832 /* UserExtension.swift */,
+				837228B81FE6A25500410832 /* CigaretteExtension.swift */,
 				83C527E41FD03EB400EDED1F /* NSCoder.swift */,
-				83C9A2061FDF07BF00F1F548 /* GeolocationHelper.swift */,
+				83EFD9191FEF168800A7A097 /* ApiError.swift */,
+				8329071C1FE4721100271C5E /* EmojiImageExtension.swift */,
+				8389792B1FE5471E00137844 /* HttpService.swift */,
+				837228B41FE6981F00410832 /* LocalStorageService.swift */,
+				8389792D1FE558AB00137844 /* ReachabilityManager.swift */,
 			);
 			path = smoggler;
 			sourceTree = "<group>";
@@ -310,6 +328,9 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-smoggler/Pods-smoggler-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Alertift/Alertift.framework",
+				"${BUILT_PRODUCTS_DIR}/Arrow/Arrow.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -317,10 +338,18 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
-				"${BUILT_PRODUCTS_DIR}/JOEmojiableBtn/JOEmojiableBtn.framework",
+				"${BUILT_PRODUCTS_DIR}/LTMorphingLabel/LTMorphingLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/Persei/Persei.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Smile/Smile.framework",
+				"${BUILT_PRODUCTS_DIR}/thenPromise/then.framework",
+				"${BUILT_PRODUCTS_DIR}/ws/ws.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alertift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Arrow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
@@ -328,7 +357,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JOEmojiableBtn.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LTMorphingLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Persei.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Smile.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/then.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ws.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -375,13 +409,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8329071D1FE4721100271C5E /* EmojiImageExtension.swift in Sources */,
 				83C527E51FD03EB400EDED1F /* NSCoder.swift in Sources */,
 				83E76D141FB1237400291AC3 /* InternetHelper.swift in Sources */,
+				837228B51FE6982000410832 /* LocalStorageService.swift in Sources */,
+				837228B91FE6A25500410832 /* CigaretteExtension.swift in Sources */,
 				83E71F5D1FAF233000CB0BBF /* smoggler.xcdatamodeld in Sources */,
+				8389792E1FE558AB00137844 /* ReachabilityManager.swift in Sources */,
+				837228B71FE6A02E00410832 /* UserExtension.swift in Sources */,
 				83E71F571FAF233000CB0BBF /* HomeViewController.swift in Sources */,
+				8389792C1FE5471E00137844 /* HttpService.swift in Sources */,
+				83EFD91A1FEF168800A7A097 /* ApiError.swift in Sources */,
 				83218DE11FB63F4600EDE055 /* LoginViewController.swift in Sources */,
 				83E71F551FAF233000CB0BBF /* AppDelegate.swift in Sources */,
-				83C9A2071FDF07BF00F1F548 /* GeolocationHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,7 +593,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.labs.debatz.smoggler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -569,7 +609,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.labs.debatz.smoggler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
