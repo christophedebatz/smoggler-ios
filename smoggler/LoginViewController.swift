@@ -106,13 +106,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let label:UILabel = UILabel()
-        label.center = CGPoint(x: 0, y: view.frame.size.height / 2)
-        label.frame.size = CGSize(width: 500, height: 200)
-        label.textColor = .red
-        label.lineBreakMode = .byWordWrapping
-        label.adjustsFontSizeToFitWidth = true
         noInternetPanel.removeFromSuperview()
         
         if let accessToken = AccessToken.current {
