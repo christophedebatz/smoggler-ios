@@ -2,10 +2,16 @@ import Foundation
 import UIKit
 import SystemConfiguration
 import ReachabilitySwift
+import CoreData
 
 class ReachabilityManager: NSObject {
     
     static let shared = ReachabilityManager()
+    var managedObjectContext: NSManagedObjectContext?
+    
+    override init() {
+        self.managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    }
     
     var isNetworkAvailable : Bool {
         return reachabilityStatus != .notReachable
@@ -19,8 +25,44 @@ class ReachabilityManager: NSObject {
         reachabilityStatus = reachability.currentReachabilityStatus
         switch reachability.currentReachabilityStatus {
             case .notReachable: debugPrint("Network became unreachable")
-            case .reachableViaWiFi: debugPrint("Network reachable through WiFi")
-            case .reachableViaWWAN: debugPrint("Network reachable through Cellular Data")
+        case .reachableViaWiFi: do {
+                debugPrint("Network reachable through WiFi")
+                let savedCigarettes: [Cigarette] = fetchCigarette()
+                if savedCigarettes.count > 0 {
+                    debugPrint("Sending about ", savedCigarettes.count, " cigarettes")
+                    HttpService.sendCigarettes(cigarettes: savedCigarettes, completion: { (error: ApiError?) -> Void in
+                        // hide loader
+                        if error != nil {
+                            // display error
+                            print("error when sending cigarettes")
+                        }
+                    })
+                }
+            }
+        case .reachableViaWWAN: do {
+                debugPrint("Network reachable through Cellular Data")
+                let savedCigarettes: [Cigarette] = fetchCigarette()
+                if savedCigarettes.count > 0 {
+                    debugPrint("Sending about ", savedCigarettes.count, " cigarettes")
+                    HttpService.sendCigarettes(cigarettes: savedCigarettes, completion: { (error: ApiError?) -> Void in
+                        // hide loader
+                        if error != nil {
+                            // display error
+                            print("error when sending cigarettes")
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
+    func fetchCigarette() -> [Cigarette] {
+        let Cigarette = NSFetchRequest<Cigarette>(entityName: "Cigarette")
+        
+        do {
+            return try (self.managedObjectContext?.fetch(Cigarette))! as [Cigarette]
+        } catch {
+            fatalError("Failed to fetch smoking moments: \(error)")
         }
     }
     

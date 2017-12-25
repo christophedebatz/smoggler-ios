@@ -6,6 +6,7 @@ import Alertift
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var noInternetPanel: UIView!
     // MARK: - Initialize properties
     var managedObjectContext: NSManagedObjectContext?
     
@@ -24,8 +25,7 @@ class LoginViewController: UIViewController {
         DispatchQueue.main.async {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             let nextViewController:UITabBarController = storyBoard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
-            let homeViewController:HomeViewController = nextViewController.viewControllers![0] as! HomeViewController
-            homeViewController.loggedInUser = user
+            HomeViewController.loggedInUser = user
             self.present(nextViewController, animated:true, completion:nil)
         }
     }
@@ -107,38 +107,43 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let label = UILabel()
+        let label:UILabel = UILabel()
         label.center = CGPoint(x: 0, y: view.frame.size.height / 2)
         label.frame.size = CGSize(width: 500, height: 200)
         label.textColor = .red
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
+        noInternetPanel.removeFromSuperview()
         
         if let accessToken = AccessToken.current {
             if accessToken.userId == nil {
                 showFacebookConnect()
             } else {
                 let user:User? = fetchCurrentLoggedInUser(apiId: accessToken.userId!)
-                if user != nil {
+                if user == nil {
                     if !ReachabilityManager.shared.isNetworkAvailable {
-                        label.text = "You are not connected to the Internet now."
+                        self.view.addSubview(noInternetPanel)
                     } else {
+                        
+                        // if no current user found, just ask to login with facebook
                         self.fetchHttpFacebookUser(completion: { (error: Bool, facebookUser: User?) -> Void in
                             if (error == false && facebookUser != nil) {
                                 HttpService.sendUser(user: facebookUser!, completion: { (error: ApiError?, remoteUser: User?) -> Void in
+                                    // we just have created this new user on database
                                     if error != nil && remoteUser != nil {
                                         self.storeNewLoggedInUser(user: remoteUser)
                                         self.gotoMainView(user:remoteUser)
                                     } else {
+                                        // if user already exists on database, just continue
                                         if error?.getCode() == 409 {
                                             self.gotoMainView(user:facebookUser!)
                                         } else {
-                                            label.text = "An error occured while storing user remotly. Please try again."
+                                            print("error 1")
                                         }
                                     }
                                 })
                             } else {
-                                label.text = "An error occured while exchanging data whith Facebook. Please try again."
+                                print("error 2")
                             }
                         })
                     }
@@ -148,10 +153,6 @@ class LoginViewController: UIViewController {
             }
         } else {
             self.showFacebookConnect()
-        }
-        
-        if label.text != nil {
-            self.view.addSubview(label)
         }
     }
 

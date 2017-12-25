@@ -31,7 +31,6 @@ class HttpService {
             model.updateValue(user.pictureUrl!, forKey: "pictureUrl")
         }
         
-        print("sending user")
         ws.post("/users", params: model)
             .then { (json:JSON) in
                 print(json)
@@ -51,27 +50,37 @@ class HttpService {
             }
     }
     
-    static func sendCigarette(cigarette:Cigarette) -> Void {
-        if (cigarette.smoker != nil) {
-            let ws:WS = WS(SMOGGLER_API_URI)
-            ws.headers = getAuthorizationHeader(user: cigarette.smoker!)
-            let model = [
+    static func sendCigarettes(cigarettes:[Cigarette], completion: @escaping (_ error: ApiError?) -> Void) -> Void {
+        var cigarettesArray:[[String : Any]] = Array()
+        for cigarette in cigarettes {
+            if (cigarette.smoker == nil) {
+                cigarette.smoker = HomeViewController.loggedInUser
+            }
+            cigarettesArray.append([
                 "creationDate": cigarette.creationDate!,
-                "sentiment": cigarette.sentiment!,
+                "sentiment": cigarette.sentiment != nil ? cigarette.sentiment! : nil,
                 "coords": [
                     "lat": cigarette.lat,
                     "lng": cigarette.lng
                 ]
-            ] as [String : Any]
-            print("sending new cigarette")
-            ws.post("/me/cigarettes", params: model)
-                .then { (json:JSON) in print(json) }
-                .onError { e in
-                    if let wsError = e as? WSError {
-                        print(wsError.status)
-                        print(wsError.status.rawValue)
-                    }
-            }
+            ])
+        }
+        
+        let ws:WS = WS(SMOGGLER_API_URI)
+        ws.headers = getAuthorizationHeader(user: HomeViewController.loggedInUser!)
+        let model = [
+            "cigarettes": [cigarettesArray]
+        ] as [String : Any]
+        print("sending new cigarette")
+        ws.post("/me/cigarettes", params: model)
+            .then { (json:JSON) in print(json) }
+            .onError { e in
+                if let wsError = e as? WSError {
+                    print(wsError.status)
+                    print(wsError.status.rawValue)
+                    completion(ApiError(error: true, code: wsError.status.rawValue))
+                }
+                completion(ApiError(error: true, code: nil))
         }
     }
     

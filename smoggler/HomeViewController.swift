@@ -13,17 +13,20 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
 
     // MARK: - IBOutlets
     @IBOutlet fileprivate var todayCigarettesCount: LTMorphingLabel!
+    @IBOutlet weak var waitingIndicator: UIActivityIndicatorView!
     
     // MARK: - Initialize properties
     var managedObjectContext: NSManagedObjectContext?
     var smokingButton:UIButton = UIButton()
     var locationManager: CLLocationManager!
     var coords: CLLocationCoordinate2D! = nil
-    var loggedInUser:User?
+    public static var loggedInUser:User?
     
     required init?(coder aDecoder: NSCoder = NSCoder.empty()) {
         super.init(coder: aDecoder)
-        self.managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let appDelegate:AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        appDelegate.homeViewController = self
+        self.managedObjectContext = appDelegate.persistentContainer.viewContext
     }
     
     override func viewDidLoad() {
@@ -48,6 +51,7 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
         smokingButton.layer.cornerRadius = 10
         smokingButton.addTarget(self, action: #selector(HomeViewController.smoke(_:)), for: .touchUpInside)
         
+        waitingIndicator.layer.isHidden = true
         view.addSubview(smokingButton)
         displayTodaysCigarettes()
     }
@@ -75,12 +79,13 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
                 into: self.managedObjectContext!
         ) as! Cigarette
         
-        cigarette.smoker = loggedInUser!
+        cigarette.smoker = HomeViewController.loggedInUser!
         cigarette.creationDate = Date()
     
         if coords != nil {
             cigarette.lat = Double(coords.latitude)
             cigarette.lng = Double(coords.longitude)
+            print("lat=", coords.latitude)
         }
         
         if becauseOf != nil {
@@ -88,15 +93,26 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
         }
         
         if ReachabilityManager.shared.isNetworkAvailable {
-            HttpService.sendCigarette(cigarette: cigarette)
+            waitingIndicator.layer.isHidden = false
+            waitingIndicator.startAnimating()
+            HttpService.sendCigarettes(cigarettes: [cigarette], completion: { (error: ApiError?) -> Void in
+                print("saved on server")
+                self.waitingIndicator.stopAnimating()
+                 self.waitingIndicator.layer.isHidden = true
+                if error != nil {
+                    // display error
+                }
+            })
         } else {
             do {
                 try cigarette.managedObjectContext?.save()
-                self.displayTodaysCigarettes()
+                print("saved locally")
             } catch {
                 print("Unexpected error appeared while storing cigarette locally.")
             }
         }
+        self.addCigaretteCount()
+        self.displayTodaysCigarettes()
     }
     
     func fetchCigarette() -> [Cigarette] {
@@ -105,20 +121,67 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
         do {
             return try (self.managedObjectContext?.fetch(Cigarette))! as [Cigarette]
         } catch {
-            fatalError("Failed to fetch smoking moments: \(error)")
+            fatalError("Failed to fetch cigarettes: \(error)")
+        }
+    }
+    
+    func addCigaretteCount() -> Void {
+        let startOfDay = NSCalendar.current.startOfDay(for: Date())
+        
+        // all daily metric of today
+        let dailyMetricsRequest:NSFetchRequest<DailyMetric> = DailyMetric.fetchRequest()
+        dailyMetricsRequest.predicate = NSPredicate(format: "date > %@", startOfDay as CVarArg)
+        
+        // execute get request
+        var dailyMetrics:[DailyMetric] = []
+        do {
+            dailyMetrics = try (self.managedObjectContext?.fetch(dailyMetricsRequest))! as [DailyMetric]
+        } catch {
+            fatalError("Failed to fetch cigarettes: \(error)")
+        }
+        
+        // if one already exists for today, just update it
+        if dailyMetrics.count == 1 {
+            let metric = dailyMetrics[0]
+            metric.setValue(Date(), forKey: "date")
+            metric.setValue(metric.count + 1, forKey: "count")
+        }
+        
+        // if no metrics for today, create a new one
+        else if dailyMetrics.count == 0 {
+            let dailyMetric:DailyMetric = NSEntityDescription.insertNewObject(
+                forEntityName: "DailyMetric",
+                into: self.managedObjectContext!
+                ) as! DailyMetric
+            
+            dailyMetric.count = 1
+            dailyMetric.date = Date()
+        } else {
+            print("error because today's metrics count is more than one.")
+        }
+        
+        // store locally
+        do {
+            try self.managedObjectContext?.save()
+            print("saving one cigarette on local counter")
+        } catch {
+            print("Unexpected error appeared while adding to local counter.")
         }
     }
     
     func countTodaysCigarettes() -> Int {
         let startOfDay = NSCalendar.current.startOfDay(for: Date())
-        let cigaretteRequest:NSFetchRequest<Cigarette> = Cigarette.fetchRequest()
-        cigaretteRequest.predicate = NSPredicate(format: "creationDate > %@", startOfDay as CVarArg)
+        let dailyMetricsRequest:NSFetchRequest<DailyMetric> = DailyMetric.fetchRequest()
+        dailyMetricsRequest.predicate = NSPredicate(format: "date > %@", startOfDay as CVarArg)
         
+        var dailyMetrics:[DailyMetric] = []
         do {
-            return try (self.managedObjectContext?.count(for: cigaretteRequest))! as Int
+            dailyMetrics = try (self.managedObjectContext?.fetch(dailyMetricsRequest))! as [DailyMetric]
         } catch {
             fatalError("Failed to fetch cigarettes: \(error)")
         }
+        
+        return dailyMetrics.count
     }
     
     func displayTodaysCigarettes() {

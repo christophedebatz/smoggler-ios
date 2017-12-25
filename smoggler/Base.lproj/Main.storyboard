@@ -57,12 +57,17 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="morphingEnabled" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Yr1-CH-Rg5">
+                                <rect key="frame" x="161" y="84" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="icon-home" id="RBy-rS-vHd"/>
                     <connections>
                         <outlet property="todayCigarettesCount" destination="VNg-UA-vcI" id="d1I-rL-oCk"/>
+                        <outlet property="waitingIndicator" destination="Yr1-CH-Rg5" id="52q-VR-xls"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="us0-9I-imA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -80,15 +85,38 @@
                     <view key="view" contentMode="scaleToFill" id="mgr-NF-5rz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="noInternetPanel" translatesAutoresizingMaskIntoConstraints="NO" id="Cva-eb-TA0">
+                                <rect key="frame" x="16" y="122" width="288" height="234"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="no-network" translatesAutoresizingMaskIntoConstraints="NO" id="ydu-hm-dvD">
+                                        <rect key="frame" x="85" y="26" width="118" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please check your Internet access." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxB-pt-8sJ">
+                                        <rect key="frame" x="11" y="168" width="266" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <accessibility key="accessibilityConfiguration" identifier="noInternetPanel"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <accessibility key="accessibilityConfiguration" identifier="noInternetPanel"/>
                     </view>
                     <connections>
+                        <outlet property="noInternetPanel" destination="Cva-eb-TA0" id="eED-27-PfK"/>
                         <segue destination="9xe-gz-QOa" kind="show" identifier="" id="wIp-xt-PoG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QqT-ym-jS9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-857" y="712"/>
+            <point key="canvasLocation" x="-858.75" y="711.97183098591552"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="uKZ-zg-jyT">
@@ -111,10 +139,24 @@
             </objects>
             <point key="canvasLocation" x="4" y="712"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="JXQ-dv-FOG">
+            <objects>
+                <viewController id="cR4-au-Oax" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H4i-da-xuu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NHO-zU-7Ld" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="background2" width="1437" height="2559"/>
         <image name="icon-home" width="25" height="25"/>
         <image name="icon-plot" width="25" height="25"/>
+        <image name="no-network" width="512" height="512"/>
     </resources>
 </document>
