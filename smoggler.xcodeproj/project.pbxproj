@@ -118,6 +118,36 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		838F32DC1FF29E3300769C38 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				83E71F561FAF233000CB0BBF /* HomeViewController.swift */,
+				83218DE01FB63F4600EDE055 /* LoginViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		838F32DD1FF29E4000769C38 /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				837228B61FE6A02E00410832 /* UserExtension.swift */,
+				837228B81FE6A25500410832 /* CigaretteExtension.swift */,
+				8329071C1FE4721100271C5E /* EmojiImageExtension.swift */,
+			);
+			path = ext;
+			sourceTree = "<group>";
+		};
+		838F32DE1FF29E4D00769C38 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				83E76D131FB1237400291AC3 /* InternetHelper.swift */,
+				8389792B1FE5471E00137844 /* HttpService.swift */,
+				837228B41FE6981F00410832 /* LocalStorageService.swift */,
+				8389792D1FE558AB00137844 /* ReachabilityManager.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
 		83E71F481FAF233000CB0BBF = {
 			isa = PBXGroup;
 			children = (
@@ -144,22 +174,16 @@
 			isa = PBXGroup;
 			children = (
 				83E71F541FAF233000CB0BBF /* AppDelegate.swift */,
-				83E71F561FAF233000CB0BBF /* HomeViewController.swift */,
+				838F32DC1FF29E3300769C38 /* controller */,
 				83E71F581FAF233000CB0BBF /* Main.storyboard */,
 				83E71F5E1FAF233000CB0BBF /* Assets.xcassets */,
 				83E71F601FAF233000CB0BBF /* LaunchScreen.storyboard */,
 				83E71F631FAF233000CB0BBF /* Info.plist */,
 				83E71F5B1FAF233000CB0BBF /* smoggler.xcdatamodeld */,
-				83E76D131FB1237400291AC3 /* InternetHelper.swift */,
-				83218DE01FB63F4600EDE055 /* LoginViewController.swift */,
-				837228B61FE6A02E00410832 /* UserExtension.swift */,
-				837228B81FE6A25500410832 /* CigaretteExtension.swift */,
+				838F32DE1FF29E4D00769C38 /* service */,
+				838F32DD1FF29E4000769C38 /* ext */,
 				83C527E41FD03EB400EDED1F /* NSCoder.swift */,
 				83EFD9191FEF168800A7A097 /* ApiError.swift */,
-				8329071C1FE4721100271C5E /* EmojiImageExtension.swift */,
-				8389792B1FE5471E00137844 /* HttpService.swift */,
-				837228B41FE6981F00410832 /* LocalStorageService.swift */,
-				8389792D1FE558AB00137844 /* ReachabilityManager.swift */,
 			);
 			path = smoggler;
 			sourceTree = "<group>";

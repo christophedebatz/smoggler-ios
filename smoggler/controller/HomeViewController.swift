@@ -101,17 +101,20 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
                  self.waitingIndicator.layer.isHidden = true
                 if error != nil {
                     // display error
+                } else {
+                    self.addCigaretteCount()
                 }
             })
         } else {
             do {
                 try cigarette.managedObjectContext?.save()
+                self.addCigaretteCount()
                 print("saved locally")
             } catch {
                 print("Unexpected error appeared while storing cigarette locally.")
             }
         }
-        self.addCigaretteCount()
+        
         self.displayTodaysCigarettes()
     }
     
