@@ -35,6 +35,10 @@ class ReachabilityManager: NSObject {
                         if error != nil {
                             // display error
                             print("error when sending cigarettes")
+                        } else {
+                            print("removing all local cigarettes")
+                            let localService = LocalStorageService(managedObjectContext: self.managedObjectContext!)
+                            localService.removeAllCigarettes()
                         }
                     })
                 }
@@ -49,6 +53,10 @@ class ReachabilityManager: NSObject {
                         if error != nil {
                             // display error
                             print("error when sending cigarettes")
+                        } else {
+                            print("removing all local cigarettes")
+                            let localService = LocalStorageService(managedObjectContext: self.managedObjectContext!)
+                            localService.removeAllCigarettes()
                         }
                     })
                 }
@@ -98,9 +106,8 @@ class ReachabilityManager: NSObject {
         if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
             return false
         }
-        let isReachable = flags.contains(.reachable)
-        let needsConnection = flags.contains(.connectionRequired)
-        return (isReachable && !needsConnection)
+        
+        return flags.contains(.reachable) && !flags.contains(.connectionRequired)
     }
 
 }

@@ -4,15 +4,12 @@ import CoreLocation
 import Alertift
 import Smile
 import LTMorphingLabel
-/**
- A chaque démarrage, on envoi toutes les données enregistrées mais non exportées
- A chaque démarrage, on reçoit toutes les données passées
- A chaque fois que l'utilisateur fume, on envoi au serveur ou on sauvegarde en local si pas d'internet
- */
+
 class HomeViewController : UIViewController, CLLocationManagerDelegate {
 
     // MARK: - IBOutlets
     @IBOutlet fileprivate var todayCigarettesCount: LTMorphingLabel!
+    @IBOutlet weak var headline: UILabel!
     @IBOutlet weak var waitingIndicator: UIActivityIndicatorView!
     
     // MARK: - Initialize properties
@@ -40,6 +37,13 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
     }
     
     func initializeComponents() {
+        if HomeViewController.loggedInUser != nil {
+            self.headline.text = "Hello " + (HomeViewController.loggedInUser!.firstName?.capitalized)!
+        } else {
+            self.headline.text = "Hello :)"
+        }
+        self.view.addSubview(self.headline)
+        
         // smoking button job here
         let x = (self.view.frame.size.width - 230) / 2
         let y = (self.view.frame.size.height - 60) / 2
@@ -52,8 +56,8 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
         smokingButton.addTarget(self, action: #selector(HomeViewController.smoke(_:)), for: .touchUpInside)
         
         waitingIndicator.layer.isHidden = true
-        view.addSubview(smokingButton)
-        displayTodaysCigarettes()
+        self.view.addSubview(smokingButton)
+        self.refreshCigaretteTodayCount()
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -63,7 +67,7 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if (manager.location != nil) {
+        if manager.location != nil {
             self.coords = manager.location?.coordinate
         }
     }
@@ -85,7 +89,6 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
         if coords != nil {
             cigarette.lat = Double(coords.latitude)
             cigarette.lng = Double(coords.longitude)
-            print("lat=", coords.latitude)
         }
         
         if becauseOf != nil {
@@ -96,26 +99,27 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
             waitingIndicator.layer.isHidden = false
             waitingIndicator.startAnimating()
             HttpService.sendCigarettes(cigarettes: [cigarette], completion: { (error: ApiError?) -> Void in
-                print("saved on server")
                 self.waitingIndicator.stopAnimating()
-                 self.waitingIndicator.layer.isHidden = true
+                self.waitingIndicator.layer.isHidden = true
                 if error != nil {
                     // display error
                 } else {
                     self.addCigaretteCount()
+                    let localService = LocalStorageService(managedObjectContext: self.managedObjectContext!)
+                    localService.removeAllCigarettes()
+                    self.refreshCigaretteTodayCount()
                 }
             })
         } else {
             do {
                 try cigarette.managedObjectContext?.save()
                 self.addCigaretteCount()
+                self.refreshCigaretteTodayCount()
                 print("saved locally")
             } catch {
                 print("Unexpected error appeared while storing cigarette locally.")
             }
         }
-        
-        self.displayTodaysCigarettes()
     }
     
     func fetchCigarette() -> [Cigarette] {
@@ -174,9 +178,12 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
     
     func countTodaysCigarettes() -> Int {
         let startOfDay = NSCalendar.current.startOfDay(for: Date())
+        
+        // all daily metric of today
         let dailyMetricsRequest:NSFetchRequest<DailyMetric> = DailyMetric.fetchRequest()
         dailyMetricsRequest.predicate = NSPredicate(format: "date > %@", startOfDay as CVarArg)
         
+        // execute get request
         var dailyMetrics:[DailyMetric] = []
         do {
             dailyMetrics = try (self.managedObjectContext?.fetch(dailyMetricsRequest))! as [DailyMetric]
@@ -184,17 +191,16 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
             fatalError("Failed to fetch cigarettes: \(error)")
         }
         
-        return dailyMetrics.count
+        return dailyMetrics.count == 1 ? Int(dailyMetrics[0].count) : 0
     }
     
-    func displayTodaysCigarettes() {
-        let count = countTodaysCigarettes()
+    func refreshCigaretteTodayCount() {
+        let count = self.countTodaysCigarettes()
         var plural = ""
         if count > 1 {
             plural = "s"
         }
-        
-        todayCigarettesCount.text = String(describing: count) + " cigarette" + plural + " today"
+        self.todayCigarettesCount.text = String(describing: count) + " cigarette" + plural + " today"
     }
     
     // MARK: - IBActions
@@ -207,7 +213,8 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
             .action(.default(Smile.replaceAlias(string: "Nervous :confused:")), handler: {action, index in self.smoke(becauseOf: "nervous")})
             .action(.default(Smile.replaceAlias(string: "Sad :disappointed:")), handler: {action, index in self.smoke(becauseOf: "not-happy")})
             .action(.default(Smile.replaceAlias(string: "Sick :nauseated_face:")), handler: {action, index in self.smoke(becauseOf: "sick")})
-            .action(.cancel("Something different..."), handler: { action, index in self.smoke(becauseOf: nil)})
+            .action(.default("Something different..."), handler: { action, index in self.smoke(becauseOf: "NA")})
+            .action(.cancel("Cancel"))
             .show(on: self)
     }
     

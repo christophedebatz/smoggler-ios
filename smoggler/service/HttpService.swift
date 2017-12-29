@@ -56,9 +56,13 @@ class HttpService {
             if (cigarette.smoker == nil) {
                 cigarette.smoker = HomeViewController.loggedInUser
             }
+            var sentiment:String = String()
+            if cigarette.sentiment == nil || !cigarette.sentiment!.elementsEqual("NA") {
+                sentiment = cigarette.sentiment!
+            }
             cigarettesArray.append([
                 "creationDate": cigarette.creationDate!,
-                "sentiment": cigarette.sentiment != nil ? cigarette.sentiment! : nil,
+                "sentiment": sentiment,
                 "coords": [
                     "lat": cigarette.lat,
                     "lng": cigarette.lng
@@ -73,7 +77,7 @@ class HttpService {
         ] as [String : Any]
         print("sending new cigarette")
         ws.post("/me/cigarettes", params: model)
-            .then { (json:JSON) in print(json) }
+            .then { (json:JSON) in completion(nil) }
             .onError { e in
                 if let wsError = e as? WSError {
                     print(wsError.status)
